@@ -62,6 +62,7 @@ module CVGen
 
     def document_options(root)
       h = super.update(:margin => 72)
+      h[:info][:Creator] = 'cvgen (using kramdown PDF converter)'
       h[:info].update(@options[:'document-info']) if @options[:'document-info']
       h
     end
@@ -81,7 +82,6 @@ module CVGen
         @current_padding = opts[:bottom_padding] unless floated
       end
     end
-
 
   end
 end
