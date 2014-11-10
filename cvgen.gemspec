@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'cvgen'
-  s.version = '0.0.1'
+  s.version = '0.0.2'
   s.summary = "Generate CVs in PDF format from Markdown-like source"
   s.description = "Because everybody hates word processors"
   s.author = 'Matt Wildig'
