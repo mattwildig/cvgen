@@ -7,12 +7,14 @@ module CVGen
     def self.call
       input = ARGF.read
 
+      config = {}
+      config.merge!(YAML.load_file('config.yml')) if File.exist? 'config.yml'
+
       if input.start_with? "---\n"
-        config, input = input.split /(?<=\.{3}\n)/, 2
-        config = YAML.load config
-        raise "Config must be a hash" unless config.is_a? Hash
+        front, input = input.split /(?<=\.{3}\n)/, 2
+        config.merge!(YAML.load front)
       end
-      config ||= {}
+
       out = CVGen.generate input, config
 
       $stdout.write out
