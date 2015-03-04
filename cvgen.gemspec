@@ -11,4 +11,5 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'kramdown', '~> 1.5'
   s.add_runtime_dependency 'prawn', '~> 1.3'
   s.add_runtime_dependency 'prawn-table', '~> 0.2' # Kramdown PDF converter requires this
+  s.add_runtime_dependency 'erubis', '~> 2.7'
 end
