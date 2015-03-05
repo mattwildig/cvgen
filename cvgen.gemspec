@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'cvgen'
-  s.version = '0.0.2'
+  s.version = '0.0.3'
   s.summary = "Generate CVs in PDF format from Markdown-like source"
   s.description = "Because everybody hates word processors"
   s.author = 'Matt Wildig'
@@ -12,4 +12,5 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'prawn', '~> 1.3'
   s.add_runtime_dependency 'prawn-table', '~> 0.2' # Kramdown PDF converter requires this
   s.add_runtime_dependency 'erubis', '~> 2.7'
+  s.add_runtime_dependency 'listen', '~> 2.8'
 end
