@@ -11,6 +11,11 @@ module CVGen
 
     source = Erubis::Eruby.new(source, :bufvar => '@output_buffer').evaluate(ErbContext.new(opts.fetch(FEATURES_OPTION, [])))
 
+    if opts['debug_erb']
+      puts source
+      exit
+    end
+
     root, warnings = Parser.parse(source, opts)
     $stderr.puts warnings if warnings
     output, c_warnings = Converter.convert(root, opts)

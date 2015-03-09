@@ -63,6 +63,10 @@ module CVGen
         opts.on("-w", "--watch", "Watch for changes and automatically regenerate pdf") do
           config['watch'] = true
         end
+
+        opts.on("-d", "--debug", "Print result of Erb preprocessing and exit") do
+          config['debug_erb'] = true
+        end
       end.parse!
 
       config
