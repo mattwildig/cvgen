@@ -19,6 +19,13 @@ module CVGen
 
       rval
     end
+
+    def handle_extension name, *args
+      return super unless name == 'pgbr'
+      @tree.children << Element.new(:pgbr, nil, nil, :location => @src.current_line_number)
+      true
+    end
+
   end
 
 end

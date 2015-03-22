@@ -83,5 +83,13 @@ module CVGen
       end
     end
 
+    def pgbr_options(el, opts)
+      {}
+    end
+
+    def render_pgbr(el, opts)
+      @pdf.start_new_page
+    end
+
   end
 end
