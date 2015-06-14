@@ -3,18 +3,21 @@ require 'kramdown'
 module CVGen
   
   class Parser < Kramdown::Parser::Kramdown
-    Kramdown::Parser::Kramdown.send :remove_const, :ATX_HEADER_MATCH
-    Kramdown::Parser::Kramdown::ATX_HEADER_MATCH = /^(\#{1,6})(.+?(?:\\#)?)\s*?#*#{HEADER_ID}\s*?\n(?:(?:(\S.*)\s*?\n)(?:(\S.*)[ \t]*\n)?)?/
+
+    HEADER_DETAILS = /(\S.*)\n(?:(\S.*)\n)?/
 
     def parse_atx_header
       rval = super
 
-      if rval
-        @tree.children.last.options['date'] = @src[4]
-        if @src[5]
+      if rval && @src.check(HEADER_DETAILS)
+        date, title = @src[1], @src[2]
+        @tree.children.last.options['date'] = date
+
+        if title
           @tree.children.last.children << Element.new(:br, nil, nil, :location => @src.current_line_number)
-          add_text(@src[5], @tree.children.last) 
+          add_text(title, @tree.children.last)
         end
+        @src.pos += @src.matched_size
       end
 
       rval
