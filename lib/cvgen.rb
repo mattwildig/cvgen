@@ -18,6 +18,12 @@ module CVGen
 
     root, warnings = Parser.parse(source, opts)
     $stderr.puts warnings if warnings
+
+    if opts['parse_tree']
+      puts root.inspect
+      exit
+    end
+
     output, c_warnings = Converter.convert(root, opts)
     $stderr.puts c_warnings if c_warnings
     output

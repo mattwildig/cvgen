@@ -67,6 +67,11 @@ module CVGen
         opts.on("-d", "--debug", "Print result of Erb preprocessing and exit") do
           config['debug_erb'] = true
         end
+
+        opts.on("-p", "--parse-tree", "Print result of parsing and exit") do
+          config['parse_tree'] = true
+        end
+
       end.parse!
 
       config
